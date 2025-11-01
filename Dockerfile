@@ -42,6 +42,5 @@ EXPOSE 8080
 ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=75 -XX:+UseContainerSupport"
 # ENV SPRING_PROFILES_ACTIVE=prod
 
-# Run via Spring Boot loader to use layers
-ENTRYPOINT ["java","org.springframework.boot.loader.launch.JarLauncher"]
-``
+# Run the Spring Boot application directly
+ENTRYPOINT ["java","-cp","/app/application/BOOT-INF/classes:/app/dependencies/BOOT-INF/lib/*:/app/snapshot-dependencies/BOOT-INF/lib/*","com.example.authtest.AuthtestApplication"]
